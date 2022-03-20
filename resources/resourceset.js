@@ -168,6 +168,17 @@ ResourceSet.prototype.select = function(selects)
 	return this;
 }
 
+ResourceSet.prototype.searchTerms = function(searchTerms, searchIn)
+{
+	this.searchTerms = searchTerms;
+	this.searchIn = searchIn;
+	if(this.searchTerms != null && this.searchTerms != "")
+	{
+		this.maximopath = getMaximoPath(this.maximopath) + "oslc.searchTerms=" + encodeURIComponent(this.searchTerms);
+		this.maximopath = getMaximoPath(this.maximopath) + "searchAttributes=" + encodeURIComponent(this.searchIn);
+	}
+	return this;
+}
 
 ResourceSet.prototype.where = function(prop)
 {
