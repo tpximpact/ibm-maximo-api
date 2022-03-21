@@ -159,8 +159,14 @@ ResourceSet.prototype.select = function(selects)
 			}*/
 		    selectStr = ((arrayLength - i) > 1) ? selectStr+wh+"," : selectStr+wh;
 		}
+
+		this.select = selectStr+relationshipString(relationships);
 	 }
-	this.select = selectStr+relationshipString(relationships);
+	 else
+     {
+         this.select = selects;
+	 }
+
 	if(this.select != null && this.select != "")
 	{
 		this.maximopath = getMaximoPath(this.maximopath)+"oslc.select="+encodeURIComponent(this.select);
