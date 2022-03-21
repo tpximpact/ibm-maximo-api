@@ -172,10 +172,18 @@ ResourceSet.prototype.searchTerms = function(searchTerms, searchIn)
 {
 	this.searchTerms = searchTerms;
 	this.searchIn = searchIn;
-	if(this.searchTerms != null && this.searchTerms != "")
+	if(this.searchTerms !== null && this.searchTerms !== "")
 	{
 		this.maximopath = getMaximoPath(this.maximopath) + "oslc.searchTerms=" + encodeURIComponent(this.searchTerms);
 		this.maximopath = getMaximoPath(this.maximopath) + "searchAttributes=" + encodeURIComponent(this.searchIn);
+	}
+	return this;
+}
+
+ResourceSet.prototype.savedQuery = function (savedQuery) {
+	this.savedQuery = savedQuery;
+	if(this.savedQuery !== null && this.savedQuery !== "") {
+		this.maximopath = getMaximoPath(this.maximopath) + 'savedQuery=' + encodeURIComponent(this.savedQuery);
 	}
 	return this;
 }
