@@ -194,6 +194,14 @@ ResourceSet.prototype.savedQuery = function (savedQuery) {
 	return this;
 }
 
+ResourceSet.prototype.queryWhere = function (querywhere) {
+	this.querywhere = querywhere;
+	if(this.querywhere !== null && this.querywhere !== "") {
+		this.maximopath = getMaximoPath(this.maximopath) + 'querywhere=' + encodeURIComponent(this.querywhere);
+	}
+	return this;
+}
+
 ResourceSet.prototype.where = function(prop)
 {
 	this.where = (prop.indexOf(":") < 1) ? this.namespace+prop : prop
