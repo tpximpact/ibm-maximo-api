@@ -202,6 +202,14 @@ ResourceSet.prototype.queryWhere = function (querywhere) {
 	return this;
 }
 
+ResourceSet.prototype.pageNo = function (pageNo) {
+	this.pageno = pageNo;
+	if(this.pageno !== null && this.pageno !== "") {
+		this.maximopath = getMaximoPath(this.maximopath) + 'pageno=' + encodeURIComponent(this.pageno);
+	}
+	return this;
+}
+
 ResourceSet.prototype.where = function(prop)
 {
 	this.where = (prop.indexOf(":") < 1) ? this.namespace+prop : prop
